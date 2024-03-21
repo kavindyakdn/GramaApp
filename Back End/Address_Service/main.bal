@@ -66,18 +66,18 @@ service /addressCheck on new http:Listener(9092) {
     }
 }
 
-service /gramasevaDivision on new http:Listener(9093) {
-    resource function get allGramasevaDivisions() returns GramaDivisions[]|error {
+// service /gramasevaDivision on new http:Listener(9093) {
+//     resource function get allGramasevaDivisions() returns GramaDivisions[]|error {
 
-        GramaDivisions[] gramaDivisions=[];
-        stream<GramaDivisions, sql:Error?> query = nationalDb->query(`Select divisionId, divisionName from grama_division_information`);
-        check from GramaDivisions req in query
-            do {
-                gramaDivisions.push(req);
-            };
-        check query.close();
-        return gramaDivisions;
-    }
-}
+//         GramaDivisions[] gramaDivisions=[];
+//         stream<GramaDivisions, sql:Error?> query = nationalDb->query(`Select divisionId, divisionName from grama_division_information`);
+//         check from GramaDivisions req in query
+//             do {
+//                 gramaDivisions.push(req);
+//             };
+//         check query.close();
+//         return gramaDivisions;
+//     }
+// }
 
 
